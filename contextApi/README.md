@@ -18,12 +18,15 @@ Here's a simple example of how `useContext` is used:
 import React, { useContext } from 'react';
 
 // Create a Context object
-const ThemeContext = React.createContext('light');
+const ThemeContext = React.createContext({
+  style: 'light',
+  primaryColor: 'blue',
+});
 
 function App() {
   // Use a Provider to pass the current theme to the tree below
   return (
-    <ThemeContext.Provider value="dark">
+    <ThemeContext.Provider>
       <Toolbar />
     </ThemeContext.Provider>
   );
