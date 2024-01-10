@@ -1,60 +1,30 @@
-# Memoization
+# React + TypeScript + Vite
 
-Memoization is a programming technique used primarily to speed up computer programs by storing the results of expensive function calls and reusing them when the same inputs occur again. This technique is used in React to optimize performance of components.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## 1. useMemo
+Currently, two official plugins are available:
 
-The `useMemo` hook is used to memoize expensive value calculations. It returns a memoized value that only changes if one of the dependencies has changed.
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-Here's a simple example:
+## Expanding the ESLint configuration
 
-```javascript
-import React, { useMemo } from 'react';
+If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-function MyComponent({ a, b }) {
-  const value = useMemo(() => {
-    // Perform a complex calculation here
-    return a * b;
-  }, [a, b]);
+- Configure the top-level `parserOptions` property like this:
 
-  return <div>{value}</div>;
+```js
+export default {
+  // other rules...
+  parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+    project: ['./tsconfig.json', './tsconfig.node.json'],
+    tsconfigRootDir: __dirname,
+  },
 }
 ```
 
-In this example, useMemo is used to memoize the result of a multiplication operation. The result is only recalculated if a or b changes.
-
-2. memo
-React.memo is a higher order component that memoizes the result of a function component. It prevents unnecessary re-renders if the props have not changed.
-
-Here's a simple example:
-```javascript
-import React, { memo } from 'react';
-
-const MyComponent = function MyComponent({ a, b }) {
-  // Component implementation
-  return <div>{a} {b}</div>;
-};
-
-export default memo(MyComponent)
-```
-
-In this example, React.memo is used to prevent MyComponent from re-rendering if a and b have not changed.
-
-3. useCallback
-The useCallback hook returns a memoized version of the callback function that only changes if one of the dependencies has changed.
-
-Here's a simple example:
-```javascript
-  import React, { useCallback } from 'react';
-
-function MyComponent({ a, b }) {
-  const memoizedCallback = useCallback(() => {
-    // Perform a complex calculation here
-    return a * b;
-  }, [a, b]);
-
-  return <div>{memoizedCallback()}</div>;
-}
-```
-
-In this example, useCallback is used to memoize a callback function. The function is only recreated if a or b changes.
+- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
+- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
+- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
