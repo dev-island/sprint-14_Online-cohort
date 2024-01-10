@@ -18,12 +18,17 @@
     - [Project: CV Application](https://www.theodinproject.com/lessons/node-path-javascript-cv-application)
     - Bonus: [Project: Memory Card](https://www.theodinproject.com/lessons/node-path-react-new-memory-card)
 
+## Type checking
+  - PropTypes
+  - Typescript
+
 ## Advanced Hooks
 
 ### State Management
    - useReducer
    - useContext
    - Redux
+
   
 ### Refs and memoization
  - useRef
@@ -32,9 +37,6 @@
 
 ## Custom hooks
 
-## Type checking
-- PropTypes
-- Typescript
 
 
 
