@@ -1,19 +1,21 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 
 const WithoutMemo = () => {
   const [count, setCount] = useState(0);
   const [secondCount, setSecondCount] = useState(0);
 
-  const computeExpensiveValue = (num: number) => {
+  const computeExpensiveValue = (_count: number) => {
     console.log("Computing...");
     let result = 0;
     for (let i = 0; i < 1000000000; i++) {
-      result += num;
+      result += _count;
     }
     return result;
   };
 
-  const result = computeExpensiveValue(count);
+  const result = useMemo(() => {
+    return computeExpensiveValue(count);
+  }, [count]);
 
   // This component re-renders on every count change,
   // causing the expensive function to run again

@@ -7,12 +7,12 @@ const PreventReRender = () => {
 
   function handleClick() {
     ref.current = ref.current + 1;
-    alert(`You clicked ${ref.current} times!`);
+    console.log(`You clicked the ref ${ref.current} times!`);
   }
 
   function handleUpdateState() {
     setCount(count + 1);
-    alert(`You clicked ${count + 1} times!`);
+    console.log(`You clicked setState ${count + 1} times!`);
   }
 
   return (

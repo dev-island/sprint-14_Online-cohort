@@ -20,13 +20,15 @@ function reducer(state, action) {
 }
 
 function WithReducer() {
+  const [count, setCount] = useState(0);
   const [state, dispatch] = useReducer(reducer, { count: 0 });
+
 
   return (
     <div>
       Count: {state.count}
-      <button onClick={() => dispatch({ type: 'INCREMENT'})}>Increment</button>
-      <button onClick={() => dispatch({ type: 'ADD_N', n: 2 })}>Add N</button>
+      <button onClick={() => setState({ type: 'INCREMENT'})}>Increment</button>
+      <button onClick={() => setState({ type: 'ADD_N', n: 2 })}>Add N</button>
       <button onClick={() => setCount(count - 1)}>Decrement</button>
       <button onClick={() => setCount(0)}>Reset</button>
     </div>

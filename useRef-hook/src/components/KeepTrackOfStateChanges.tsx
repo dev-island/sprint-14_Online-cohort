@@ -2,11 +2,14 @@ import { useState, useEffect, useRef } from "react";
 
 const KeepTrackOfStateChanges = () => {
   const [inputValue, setInputValue] = useState("");
-  const previousInputValue = useRef("");
+  const ref = useRef("");
 
   useEffect(() => {
-    previousInputValue.current = inputValue;
+    console.log("useEffect hook called", inputValue);
+    ref.current = inputValue;
   }, [inputValue]);
+
+  console.log(ref.current);
 
   return (
     <>
@@ -15,10 +18,11 @@ const KeepTrackOfStateChanges = () => {
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
       />
+      {ref.current}
       <h2>Current Value: {inputValue}</h2>
-      <h2>Previous Value: {previousInputValue.current}</h2>
+      <h2>Previous Value: {ref.current}</h2>
     </>
   );
-}
+};
 
 export default KeepTrackOfStateChanges;

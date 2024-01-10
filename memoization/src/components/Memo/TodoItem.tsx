@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import { Todo } from ".";
 
 type Props = {
@@ -10,4 +10,5 @@ const TodoItem: FC<Props> = ({ item }) => {
   return <li>{item.title}</li>;
 };
 
-export default TodoItem;
+const MemoTodoItem = memo(TodoItem);
+export default MemoTodoItem;

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import List from "./List";
 
 const App = () => {
@@ -6,9 +6,9 @@ const App = () => {
   const [light, setLight] = useState(true);
 
   //getItems() returns a list of number which is number+10 and number + 100
-  const getItems = () => {
+  const getItems = useCallback(() => {
     return [input + 10, input + 100];
-  };
+  }, [input]);
 
   // Style for changing the theme
   const theme = {

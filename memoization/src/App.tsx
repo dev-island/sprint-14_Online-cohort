@@ -6,9 +6,9 @@ import Memo from "./components/Memo";
 const App = () => {
   return (
     <div>
-      <UseMemo />
+      {/* <UseMemo /> */}
       {/* <UseCallback /> */}
-      {/* <Memo /> */}
+      <Memo />
     </div>
   );
 };
